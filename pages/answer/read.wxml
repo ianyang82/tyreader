@@ -1,0 +1,9 @@
+<!--pages/answer/read.wxml-->
+<wxs module="util" src="../comm/util.wxs" />
+<include src="../comm/head.wxml" />
+<view class='container'>
+<scroll-view class='scroll_ls' bindscrolltolower="lower" scroll-y="true">
+  <include src="../comm/answer.wxml" />
+</scroll-view>
+</view>
+<include src="../comm/foot.wxml" />

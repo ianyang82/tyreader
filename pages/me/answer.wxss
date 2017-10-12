@@ -1,0 +1,4 @@
+@import "../comm/answer.wxss";
+.ans_list{
+  height: 800px;
+}

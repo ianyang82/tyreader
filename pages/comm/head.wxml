@@ -1,0 +1,1 @@
+<view class='head-view'><navigator open-type="navigateBack"><image src='../img/back.png' class='back'></image></navigator>  {{title==null?'童言朗读':title}}<navigator url="/pages/index/index" open-type="switchTab"><image src='../img/home.png' class='home'></image></navigator></view>

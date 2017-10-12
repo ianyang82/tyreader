@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<include src="../comm/head.wxml" />
+<wxs module="util" src="../comm/util.wxs">
+</wxs>
+<view class="container">
+  <view class="title-ab">
+    <view class='tt'>欢迎您来到童言朗读练习</view>
+    <view> 朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于成。这里有专业的老师实时点评, 帮助孩子们不断提高。</view>
+  </view>
+  <view class='tip'>点评老师</view>
+  <view class="tc-list">
+    <view class='tc-item' wx:for='{{teacher}}' wx:key="this*">
+      <view wx:if="{{item.show}}" class='drawer_screen'></view>
+      <view wx:if="{{item.show}}"  catchtap='hideinfo'  class="drawer_content">
+        <view>
+          <image mode='aspectFill' src='{{audiourl}}{{item.imageurl}}' class='tcg-icon'></image>
+        </view>
+        <view class='tc_name'>{{item.name}}</view>
+        <view class='tc_info'>
+        <view class='tc_title'>{{item.title}}</view>
+          <text>{{item.detail}}</text>
+        </view>
+      </view>
+      <view catchtap='show' data-idx='{{index}}'>
+        <image src='{{audiourl}}{{item.imageurl}}' class='tc-icon'></image>
+      </view>
+      <view>{{item.name}}</view>
+    </view>
+  </view>
+  <view class='nav'><view class="{{quetype==-1?'nav_focus':''}}" catchtap='load' data-type='-1'>所有</view><view wx:key="id" wx:for="{{types}}" class="{{quetype==item.id?'nav_focus':''}}" data-type='{{item.id}}' catchtap='load'>{{item.name}}</view></view>
+  <scroll-view class='que-list' bindscrolltoupper="upper" bindscrolltolower="lower" scroll-y="true">
+    <navigator wx:for="{{quelist}}" wx:key="id" url='../answer/index?id={{item.id}}'>
+      <view class="scroll-view-item">
+        <view class='view-content'>
+          <view class='item-title'>{{item.title}}</view>
+          <view class='item-foot'>
+            <view class='item-date'>{{util.format(item.updateDate)}}</view>
+            <view class='item-as'>朗读量：{{item.answercount}}</view>
+          </view>
+        </view>
+        <view class='navigator-arrow'></view>
+      </view>
+    </navigator>
+    <view wx:if="{{end}}" style='text-align: center'>已经到底了，别扯了...</view>
+  </scroll-view>
+</view>
+<include src="../comm/foot.wxml" />
+
+<form bindsubmit='subname' wx:if="{{!hasname}}">
+<view class='vuserinfo'>
+<view>
+<view>请完善以下信息</view>
+<input name='name' auto-focus='true' placeholder='学生/老师姓名'/></view>
+<button form-type='submit'>提交</button>
+</view>
+</form>
+<loading hidden="{{!isload}}">正在加载</loading>

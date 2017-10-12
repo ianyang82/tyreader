@@ -1,0 +1,70 @@
+<!--pages/about/index.wxml-->
+<include src="../comm/head.wxml" />
+<view class='container'>
+  <view class='nav'>
+    <view bindtap='changenav' data-idx='0' class="{{focusidx==0?'nav_focus':''}}">童言朗读</view>
+    <view bindtap='changenav' data-idx='1' class="{{focusidx==1?'nav_focus':''}}">关于童言</view>
+  </view>
+  <view wx:if="{{focusidx==0}}">
+    <view class="title-ab">
+      <view class='tt'>欢迎您来到童言朗读练习</view>
+      <view> 朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于成。这里有专业的老师实时点评, 帮助孩子们不断提高。</view>
+    </view>
+    <view class='tip'>点评老师</view>
+    <view class="teacher_list">
+      <view class='teacher_item' wx:for="{{teacher}}" wx:key="*this" catchtap='show' data-idx='{{index}}'>
+      <view wx:if="{{item.show}}" class='drawer_screen'></view>
+      <view wx:if="{{item.show}}"  catchtap='hideinfo'  class="drawer_content">
+        <view>
+          <image mode='aspectFill' src='{{audiourl}}{{item.imageurl}}' class='tcg-icon'></image>
+        </view>
+        <view class='tc_name'>{{item.name}}</view>
+        <view class='tc_info'>
+        <view class='tc_title'>{{item.title}}</view>
+          <text>{{item.detail}}</text>
+        </view>
+      </view>
+        <view class="teacher_head">
+          <image mode='aspectFit' class='tc-icon'  src='{{audiourl}}{{item.imageurl}}'></image>
+        </view>
+        <view class='teacher_info'>
+          <view class='teacher_name'>{{item.name}}</view>
+          <view class='teacher_pos'>{{item.title}}</view>
+          <view class='teacher_adv'>{{item.detail}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='ab' wx:if="{{focusidx==1}}">
+    <view class='ab_head'>
+      <view>
+        <image mode='widthFix' class='logo' src='../img/logo.png' />
+      </view>
+      <view>童言艺术--专注儿童语言教育</view>
+    </view>
+    <view class='ab_item navigator' bindtap='openLocation'>
+      <image class='icon' src='../img/pos.png'></image>
+      深圳市南山区星海名城一组图4栋2B
+      <view class='navigator-arrow'></view>
+    </view>
+    <view class='ab_item navigator'  bindtap='calltel' data-tel='18902430324'>
+      <image class='icon' src='../img/tel.png'></image>
+       18902430324
+      <view class='navigator-arrow'></view>
+    </view>
+
+    <view class='ab_item'>
+      <image class='icon' src='../img/wx.png'></image>
+      童言艺术
+    </view>
+    <view class='ab_item' style='border-bottom:none'>
+      <image class='icon' src='../img/photo.png'></image>
+    </view>
+    <view class='image-list'>
+    <view bindtap='showimg' wx:data-index='{{index}}' wx:key="*this" wx:for="{{imgs}}"><image src='{{item}}' mode='aspectFill'></image></view>
+    
+    </view>
+  </view>
+</view>
+<include src="../comm/foot.wxml" />

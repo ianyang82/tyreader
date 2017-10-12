@@ -1,0 +1,6 @@
+/* pages/answer/read.wxss */
+@import "../comm/answer.wxss";
+
+.scroll_ls{
+  max-height: 800px;
+}

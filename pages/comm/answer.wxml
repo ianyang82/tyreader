@@ -1,0 +1,28 @@
+<view class='ans_list'>
+    <view class='ans_item' wx:for="{{anslist}}" wx:key="id" wx:for-item="item">
+      <navigator url='../me/answer?id={{item.userid}}' open-type='redirect'>
+      <image src='{{item.headurl}}' class='head_img'/></navigator>
+      <view class='content_view '>
+        <navigator url='../answer/view?id={{item.id}}'>
+
+            <view class="head_view">
+          <view class='name_view'>{{item.usernickname}}</view>
+              <view>{{util.format(item.createDate)}}</view>
+              </view>
+          <view class="paly_view">
+            <view class='paly_but' catchtap='paly' data-idx='{{index}}'>
+              <image class='bg_img' src="../img/bg1.png" />
+              <image class='play_img' src="../img/stop.png" wx:if='{{item.play}}'></image>
+              <image class='play_img' src="../img/play.png" wx:if='{{!item.play}}'></image>
+            </view>
+            <view class='play_info'>
+            <view>{{item.title}}</view>
+              <view class='icon_ls'>{{item.likes}}赞 <image class='icon' src='../img/totop.png' wx:if='{{item.top}}'></image>
+            </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="end_view" wx:if="{{end}}" >已经到底了，别扯了...</view>
+  </view>

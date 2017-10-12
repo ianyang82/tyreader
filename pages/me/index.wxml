@@ -1,0 +1,24 @@
+<include src="../comm/head.wxml" />
+<view class="container">
+  <view class="userinfo" wf:if="{{userInfo}}">
+    <image wx:if='{{userInfo.avatarUrl}}' bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <view>
+      <navigator url="answer">我的朗读</navigator>
+    </view>
+    <view>
+      <navigator url='about'>个人信息</navigator>
+    </view>
+    <view wx:if="{{userInfo.type==0}}">
+      <navigator url="teacher">申请为老师</navigator>
+    </view>
+    <view wx:if="{{userInfo.type==1}}">
+      <navigator url="../answer/read">朗读点评</navigator>
+    </view><view wx:if="{{userInfo.type==1}}">
+      <navigator url="../question/index">发布作品</navigator>
+    </view>
+  </view>
+</view>
+<include src="../comm/foot.wxml" />

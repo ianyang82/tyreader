@@ -1,0 +1,42 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.userinfo-avatar {
+  width: 168rpx;
+  height: 168rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: #666;
+}
+.usermotto view{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  border-bottom: 1px #eee solid;
+  padding: 15px 5px 5px 5px;
+}
+.usermotto input{
+  text-align: right;
+}
+.usermotto button{
+  width: 45%;
+  font-size: 16px;
+}
+.usermotto .clear{
+  border: none
+}

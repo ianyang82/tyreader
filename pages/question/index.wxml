@@ -1,0 +1,32 @@
+<!--pages/me/teacher.wxml-->
+<include src="../comm/head.wxml" />
+<view class="container">
+  <view class="info_form">
+    <form bindsubmit='submitinfo'>
+      <view>
+        <label>标题</label>
+        <input name='title' value='{{que.title}}'></input>
+      </view>
+      <view>
+        <label>分类</label>
+        <picker bindchange="bindPickerChange" value='{{index}}' name="type" range-key="name" range="{{types}}">
+        <view>所属分类：{{types[index].name}}</view>
+      </picker>
+      </view>
+      <view>
+        <label>内容</label>
+        <textarea name="content" value='{{que.content}}'></textarea>
+      </view>
+      <view>
+        <label>要求</label>
+        <textarea name="note" value='{{que.note}}'></textarea>
+      </view>
+      
+      <view class='clear'>
+        <button form-type='submit'>确认</button>
+        <button bindtap='back'>返回</button>
+      </view>
+    </form>
+  </view>
+</view>
+<include src="../comm/foot.wxml" />

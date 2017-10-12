@@ -1,0 +1,21 @@
+<!--pages/read/read.wxml-->
+<include src="../comm/head.wxml" />
+<view class='container'>
+<view class='que_title'>{{que.title}}</view>
+<view class='que_content'>
+    <view><text>{{que.content}}</text></view>
+    <view class='que_note' wx:if="{{que.note}}">{{que.note}}</view>
+  </view>
+<view class='read_view' >
+<view>00:{{time<10?('0'+time):time}}</view>
+<view class='read_but'>
+<view class='s_but' bindtap='replay' wx:if="{{tempfilepath!=null}}">重录</view>
+<view class="{{read?'lr_but':'l_but'}}" bindtap='read'>
+<image wx:if='{{!read&&tempfilepath==null}}' src='../img/record.png'></image>
+<image wx:if='{{tempfilepath!=null&&!play}}' src='../img/cm2_fm_btn_play@2x.png'></image>
+<image wx:if='{{tempfilepath!=null&&play}}' src='../img/cm2_fm_btn_pause@2x.png'></image>
+</view>
+<view class='s_but' bindtap='save'  wx:if="{{tempfilepath!=null}}">提交</view></view>
+</view>
+</view>
+<include src="../comm/foot.wxml" />

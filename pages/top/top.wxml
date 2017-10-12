@@ -1,0 +1,12 @@
+<!--pages/top/top.wxml-->
+<wxs module="util" src="../comm/util.wxs"/>
+<include src="../comm/head.wxml" />
+<view class='container'>
+  <view class='nav'>
+    <view bindtap='changenav' data-idx='0' class="{{focusidx==0?'nav_focus':''}}">最新朗读</view>
+    <view bindtap='changenav' data-idx='1' class="{{focusidx==1?'nav_focus':''}}">周排行榜</view>
+    <view bindtap='changenav' data-idx='2' class="{{focusidx==2?'nav_focus':''}}">佳作推荐</view>
+  </view>
+<include src="../comm/answer.wxml" />
+</view>
+<include src="../comm/foot.wxml" />

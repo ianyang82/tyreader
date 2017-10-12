@@ -1,0 +1,90 @@
+
+.ans_list{
+  padding-top: 20px;
+  width: 100%
+}
+.ans_list .ans_item{
+flex-flow: row;
+display: flex;
+justify-content: center;
+align-items: center;
+border-bottom: 1px solid #eee;
+padding: 5px 10px;
+}
+
+.ans_item .head_img{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.ans_item .name_view{
+font-size: 14px !important;
+color: #666!important;
+}
+.ans_item .content_view{
+  width: 100%;
+  background-color: #eee;
+  margin-left: 10px;
+  padding:10px;
+}
+.ans_item .head_view{
+  flex-flow: row;
+  display: flex;
+  font-size: 13px;
+  color: #999;
+  width: 100%;
+  justify-content: space-between;
+  line-height: 20px;
+}
+.ans_item .paly_but{
+  height: 50px;
+  width: 50px;
+  border: 1px solid #ccc;
+}
+.ans_item .paly_view{
+  flex-flow: row;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+.ans_item .play_info{
+  width:100%;
+  margin-left: 10px;
+  display:flex;
+  justify-content: space-between;
+  flex-flow: column;
+}
+.bg_img{
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+  background: #fff;
+}
+.play_img{
+  height: 30px;
+  width: 30px;
+  position: relative;
+  left: 10px;
+  top: -45px;
+}
+.end_view{
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+  padding-left:5px; 
+}
+.icon_ls{
+  padding-top: 5px;
+  flex-flow: row;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 13px;
+  color: #999;
+}

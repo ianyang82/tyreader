@@ -1,0 +1,31 @@
+<include src="../comm/head.wxml" />
+<view class="container">
+  <view class="userinfo" wx:if="{{userInfo!=null}}">
+    <image bindtap="bindViewTap" wf:if="{{userInfo.avatarUrl!=null}}"  class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <form bindsubmit='submitinfo'>
+      <view>
+        <label>昵称</label>
+        <input name='name' value='{{userInfo.name==null?userInfo.nickName:userInfo.name}}'></input>
+      </view>
+      <view>电话
+        <input name='tel' value='{{userInfo.tel}}'></input>
+      </view>
+      <view>
+        <label>性别</label>
+        <input value="{{userInfo.gender ==1?'男':'女'}}" disabled></input>
+      </view>
+      <view>
+        <label>地区</label>
+        <input value="{{userInfo.province}}-{{userInfo.city}} " disabled></input>
+      </view>
+      <view class='clear'>
+        <button form-type='submit'>确认</button>
+        <button bindtap='back'>返回</button>
+      </view>
+    </form>
+  </view>
+</view>
+<include src="../comm/foot.wxml" />

@@ -1,0 +1,195 @@
+/* pages/about/index.wxss */
+.title-ab{
+  text-align: left;
+  font-size: 16px;
+  text-indent: 2em;
+}
+.title-ab .tt{
+  font-weight: 800;
+  padding: 5px 0;
+  text-align: center
+}
+.tip{
+  font-weight: 400;
+  margin: 10px;
+  text-align: center
+}
+.tc-icon{
+  width: 100px;height: 100px;
+}
+.teacher_head{
+  margin: 5px;
+}
+.container{
+}
+.nav{
+width: 100%;
+flex-flow: row;
+display: flex;
+justify-content: space-around;
+align-items: center;
+align-content: center;
+padding: 20px 0;
+}
+.nav view{
+  width: 40%;
+  background-color: #eee;
+  text-align: center;
+  line-height: 35px;
+  font-size: 15px;
+  height: 35px;
+  color: #666;
+  border: 1px solid #ccc;
+}
+.nav_focus{
+  color: limegreen !important;
+  background: #fff !important;
+  border: 1px solid limegreen !important;
+}
+.teacher_list{
+flex-flow: column;
+display: flex;
+align-items: center;
+align-content: center;
+padding: 0 10px;
+}
+.teacher_item{
+flex-flow: row;
+display: flex;
+align-items: flex-start;
+align-content: center;
+background: #fff;
+padding: 10px 5px;
+margin-bottom: 20px;
+font-size: 15px;
+width: 100%;
+border: 1px solid #ccc;
+box-shadow: 5px 5px 3px #888888;
+}
+.teacher_info{
+flex-flow: column;
+display: flex;
+height: 110px;
+overflow: hidden;
+}
+.teacher_name{
+  font-size: 15px;
+  font-weight: 400;
+}
+.teacher_pos{
+  color: burlywood;
+  padding: 3px 0 5px 0;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  padding-right: 10px;
+}
+.ab{
+  font-size: 16px;
+  width: 100%;
+  padding: 20px 10px;
+}
+.ab_head{
+  padding-bottom: 10px;
+}
+.logo{
+  width: 50%;
+}
+.ab_item{
+  flex-flow: row;
+  width: 100%;
+display: flex;
+align-items: center;
+align-content: center;
+padding: 15px 0px 15px 0px;
+border-bottom: 1px #ccc solid;
+}
+.navigator {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navigator-arrow {
+  padding-right: 26rpx;
+}
+.navigator-arrow:after {
+  content: " ";
+  display: inline-block;
+  height: 18rpx;
+  width: 18rpx;
+  border-width: 2rpx 2rpx 0 0;
+  border-color: #888888;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  right: 28rpx;
+}
+.image-list{
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+}
+.image-list image{
+   width: 100px;
+   height: 100px;
+   padding-bottom: 10px;
+}
+
+/*mask*/ 
+.drawer_screen { 
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 777;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+} 
+.drawer_content { 
+  z-index: 999;
+  background-color: #fff; 
+  display:  flex; 
+  position: fixed;  
+  margin:0 10%;
+  width: 70%;
+  top: 30px;
+  left: 0; 
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 5px;
+} 
+.tcg-icon{
+  width: 200px;
+  height: 200px;
+  padding: 5px 5px;
+  border: 1px solid #aaa;
+}
+.tc_name{
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+  padding: 0 0 5px 0;
+}
+.tc_info{
+  word-break: break-all;
+  color: #666;
+  width: 90%;
+  padding: 3px 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.tc_title{
+  padding: 5px 0;
+  color: #548B54;
+}

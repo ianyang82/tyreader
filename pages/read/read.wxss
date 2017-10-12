@@ -1,0 +1,71 @@
+/* pages/read/read.wxss */
+.que_title{
+  font-size: 18px;
+  font-weight: 800;
+}
+.que_content{
+  border: none;
+  font-size: 16px;
+  line-height: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.que_note{
+  padding: 10px 5px;
+  border: 1px #bbb dotted;
+  color: #666;
+  line-height: 20px;
+  text-indent: 2em;
+}
+.read_view{
+  position: fixed;
+  bottom: 0px;
+  flex-flow:column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  padding-bottom: 50px;
+}
+.read_but{
+  flex:100%;
+  display: flex;
+  height: 80px; 
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+.l_but{
+  background: limegreen;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.l_but image{
+  width: 30px;
+  height: 30px;
+}
+.lr_but{
+  background: red;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 50%;
+}
+.s_but{
+  background: limegreen;
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  border-radius: 50%;
+  font-size: 11px;
+  color: #fff;
+  line-height: 35px;
+  text-align: center;
+}

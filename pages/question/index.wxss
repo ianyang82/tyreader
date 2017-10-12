@@ -1,0 +1,28 @@
+
+.info_form {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: #666;
+}
+.info_form view{
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  border-bottom: 1px #eee solid;
+  padding: 15px 5px 5px 5px;
+}
+.info_form label{
+  padding-right: 10px;
+  width: 50px;
+}
+.info_form textarea,input{
+  width: 100%;
+}
+.info_form button{
+  width: 45%;
+  font-size: 16px;
+}
+.info_form .clear{
+  border: none
+}

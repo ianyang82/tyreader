@@ -1,0 +1,34 @@
+<!--pages/me/teacher.wxml-->
+<include src="../comm/head.wxml" />
+<view class="container">
+  <view class="userinfo" wx:if="{{userInfo!=null}}">
+    <image bindtap="bindViewTap" wf:if="{{userInfo.avatarUrl!=null}}"  class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <form bindsubmit='submitinfo'>
+      <view>
+        <label>姓名</label>
+        <input name='name'></input>
+      </view>
+      <view>
+        <label>头衔</label>
+        <input name="title"></input>
+      </view>
+      <view>
+        <label>简介</label>
+        <textarea name="detail"></textarea>
+      </view>
+      <view>
+        <label>照片</label>
+        <view class="{{imageurl==null?'upload_img':''}}">
+        <image catchtap='chooseImage' mode='aspectFit'  src="{{imageurl==null?'../img/photo.png':imageurl}}"></image></view>
+      </view>
+      <view class='clear'>
+        <button form-type='submit'>确认</button>
+        <button bindtap='back'>返回</button>
+      </view>
+    </form>
+  </view>
+</view>
+<include src="../comm/foot.wxml" />
