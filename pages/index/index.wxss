@@ -32,7 +32,7 @@
   color: #999;
 }
 .tc-icon{
-  width: 50px;height:50px;
+  width: 40px;height:40px;
   border-radius: 50%;
 }
 .usermotto {
@@ -90,8 +90,8 @@
   border-radius: 5px;
 } 
 .tcg-icon{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   padding: 5px 5px;
   border: 1px solid #aaa;
 }
@@ -105,9 +105,9 @@
   word-break: break-all;
   color: #666;
   width: 90%;
-  padding: 3px 0;
-  font-size: 16px;
-  line-height: 24px;
+  padding: 2px 0;
+  font-size: 15px;
+  line-height: 18px;
 }
 .tc_title{
   padding: 5px 0;

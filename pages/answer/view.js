@@ -45,20 +45,10 @@ Page({
         // that.play();
       }
     });
-    if (app.globalData.userInfo.type == 1 || app.globalData.userInfo.type == 2)
-    {
-      this.setData({ admin:true});
-    }
-    wx.onBackgroundAudioStop(function () {
-      console.log("play over")
-      that.data.play=false;
-      for (var i = 0; i < that.data.answer.comments.length;i++)
-        that.data.answer.comments[i].play=false;
-      that.setData({
-        play: that.data.play,
-        answer: that.data.answer
-      })
-    })
+    this.setData({
+      admin: app.globalData.userInfo.type == 1 || app.globalData.userInfo.type == 2,
+      userid: app.globalData.userInfo != null ? app.globalData.userInfo.id : 0
+    });
   },
 
   /**
@@ -72,7 +62,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.onBackgroundAudioStop(function () {
+      console.log("play over")
+      that.data.play = false;
+      for (var i = 0; i < that.data.answer.comments.length; i++)
+        that.data.answer.comments[i].play = false;
+      that.setData({
+        play: that.data.play,
+        answer: that.data.answer
+      })
+    })
   },
 
   /**
@@ -318,5 +318,51 @@ Page({
       }
     }
     
+  }, delete_comm: function (e) {
+    var that = this; var answer = this.data.answer;
+    var cidx = e.currentTarget.dataset.cidx;
+    var id = answer.comments[cidx].id;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认该评论删除',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.serverurl + '/comment/del',
+            data: { 'code': app.globalData.code, 'ids': id },
+            success: function (res) {
+              answer.comments.splice(cidx, 1);
+              that.setData({
+                answer: answer
+              });
+            }
+          })
+        }
+      }
+    });
+  },
+  delete: function (e) {
+    var that = this; 
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除该朗读',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.serverurl + '/answer/del',
+            data: { 'code': app.globalData.code, 'ids': that.data.answer.id },
+            success: function (res) {
+              wx.navigateBack({
+                fail:function(){
+                  wx.switchTab({
+                    url: '/index',
+                  })
+                }
+              })
+            }
+          })
+        }
+      }
+    });
   }
 })

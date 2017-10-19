@@ -6,7 +6,7 @@
 .que_content{
   border: none;
   font-size: 16px;
-  line-height: 30px;
+  line-height: 24px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -18,16 +18,18 @@
   line-height: 20px;
   text-indent: 2em;
 }
+.container{
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+}
 .read_view{
-  position: fixed;
-  bottom: 0px;
   flex-flow:column;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   width: 100%;
-  padding-bottom: 50px;
+  padding-top: 20px;
 }
 .read_but{
   flex:100%;

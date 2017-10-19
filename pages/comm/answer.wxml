@@ -1,6 +1,6 @@
 <view class='ans_list'>
     <view class='ans_item' wx:for="{{anslist}}" wx:key="id" wx:for-item="item">
-      <navigator url='../me/answer?id={{item.userid}}' open-type='redirect'>
+      <navigator url='../me/answer?id={{item.userid}}'>
       <image src='{{item.headurl}}' class='head_img'/></navigator>
       <view class='content_view '>
         <navigator url='../answer/view?id={{item.id}}'>

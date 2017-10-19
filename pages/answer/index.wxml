@@ -1,4 +1,5 @@
 <include src="../comm/head.wxml" />
+<wxs module="util" src="../comm/util.wxs" />
 <view class='container'>
   <view class='top_but' wx:if="{{admin}}">
     <navigator open-type='redirect' url='../question/index?id={{que.id}}'>
@@ -19,16 +20,25 @@
       </navigator>
     </view>
     <scroll-view class="ans_list" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
-      <view class="ans_item" wx:for="{{anslist}}" wx:key="uniqueid">
+      <view class="ans_item" wx:for="{{anslist}}" wx:key="uniqueid" wx:for-index="aindex">
         <view class="ans_head">
           <navigator url='../me/answer?id={{item.userid}}'><image src="{{item.headurl}}" /></navigator>
         </view>
         <view class="ans_content">
-          <view>{{item.usernickname}}</view>
+        <view class="head_view">
+          <view class='name_view'>{{item.usernickname}}</view>
+              <view>{{util.format(item.createDate)}}</view>
+              </view>
+              <view style='flex-flow: row;display: flex;justify-content:space-between'>
           <view class='msg_but' data-id="{{item.id}}" catchtap='play'>
             <image class='play_img' wx:if="{{!item.play}}" src="../img/cm2_fm_btn_play@2x.png" />
             <image class='load_img' mode='aspectFit' wx:if="{{item.play}}" src="../img/load.gif" />
           </view>
+          
+ <view data-id='{{item.id}}' bindtap='delete_ans' wx:if='{{admin||item.userid==userid}}'>
+              <image class='icon' src='../img/delete.png'></image>
+            </view>
+            </view>
           <view class='icon_list'>
             <view data-id='{{item.id}}' bindtap='top' wx:if='{{admin&&item.open}}'>
               <image class='icon' src='../img/totop.png'></image>
@@ -51,9 +61,9 @@
               <image class='icon' src='../img/good.png'></image>{{item.likes}}
               <image class='icon' wx:if='{{item.top}}' src='../img/totop.png'></image>
             </view>
-            <view class='comm_view' wx:for='{{item.comments}}' wx:key='uniqueid' wx:for-item='comm' wx:for-index="cindex">
-              <navigator url='../me/answer?id={{comm.userid}}'><text>{{comm.usernickname}}</text></navigator>:
-              <view class='msg_but' data-cidx="{{cindex}}" data-id="{{item.id}}" bindtap='playcom' wx:if='{{comm.vurl!=null}}'>
+            <view class='comm_view' wx:for='{{item.comments}}' wx:key='uniqueid' wx:for-item='comm' wx:for-index="cindex" data-cidx='{{cindex}}' data-aidx='{{aindex}}' catchtap="{{admin||comm.userid==userid?'delete_comm':''}}">
+            <text catchtap='viewuser' data-userid='{{comm.userid}}'>{{comm.usernickname}}</text>:
+              <view class='msg_but' data-cidx='{{cindex}}' data-aidx='{{aindex}}' catchtap='playcom' wx:if='{{comm.vurl!=null}}'>
                 <image class='play_img' wx:if="{{!comm.play}}" src="../img/cm2_fm_btn_play@2x.png" />
                 <image class='load_img' mode='aspectFit' wx:if="{{comm.play}}" src="../img/load.gif" />
               </view>{{comm.content!=null?comm.content:''}}

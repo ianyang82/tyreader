@@ -20,7 +20,7 @@
 .que_content{
   border: none;
   font-size: 16px;
-  line-height: 30px;
+  line-height: 24px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -57,6 +57,17 @@
   flex-direction: column;
   display: flex;
   font-size: 13px;
+}
+.head_view{
+    flex-flow: row;
+  display: flex;
+  font-size: 13px;
+  color: #999;
+  width: 100%;
+  justify-content: space-between;
+  line-height: 20px;
+}
+.head_view .name_view{
   color: dodgerblue;
 }
 .ans_head{
@@ -85,8 +96,8 @@
   height:4px; 
 }
 .icon{
-  width: 20px; height: 20px;
-  padding:0px 5px;
+  width: 15px; height: 15px;
+  padding-left: 5px;
 }
 .icon_hide{
   display: none;
@@ -150,12 +161,15 @@
 }
 .comm_view{
   flex-flow: row;
-  display: flex;
-  align-items: center;
+}
+.comm_view navigator{
+  display: inline-block;
 }
 .comm_view .msg_but{
   margin-left: 3px;
   height: 20px;
+  width: 80px;
+  display: inline-block;
 }
 .comm_view image{
   height: 10px;width: 10px

@@ -29,7 +29,10 @@ Page({
     return
     var that = this;
     qid = options.id;
-    this.setData({ admin: app.globalData.userInfo != null && (app.globalData.userInfo.type == 1 || app.globalData.userInfo.type == 2)});
+    this.setData({ 
+      admin: app.globalData.userInfo != null && (app.globalData.userInfo.type == 1 || app.globalData.userInfo.type == 2),
+      userid: app.globalData.userInfo != null ? app.globalData.userInfo.id:0
+      });
   wx.request({
     url: app.globalData.serverurl +'/question/next',
     data: { id: qid},
@@ -39,18 +42,7 @@ Page({
       that.loadans();
     }
   });
-  wx.onBackgroundAudioStop(function(){
-    for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
-      that.data.anslist[i].play = false;
-      for (var j = 0, clen=that.data.anslist[i].comments.length;j<clen;j++)
-      {
-        that.data.anslist[i].comments[j].play = false;
-      }
-    }
-    that.setData({
-      anslist: that.data.anslist,
-    })
-  })
+  
   },
 
   /**
@@ -64,21 +56,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.onBackgroundAudioStop(function () {
+      for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
+        that.data.anslist[i].play = false;
+        for (var j = 0, clen = that.data.anslist[i].comments.length; j < clen; j++) {
+          that.data.anslist[i].comments[j].play = false;
+        }
+      }
+      that.setData({
+        anslist: that.data.anslist,
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+  wx.stopBackgroundAudio();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    wx.stopBackgroundAudio();
   },
 
   /**
@@ -172,6 +175,31 @@ Page({
       }
     })
   },
+  delete_ans:function(e){
+    var that = this; var list = this.data.anslist;
+    var id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除该朗读',
+      success: function (res) {
+        if (res.confirm) {
+    wx.request({
+      url: app.globalData.serverurl + '/answer/del',
+      data: { 'code': app.globalData.code, 'ids': id },
+      success: function (res) {
+        for (var i = 0,len = list.length; i < len; ++i) {
+          if (list[i].id == id) {
+            list.splice(i, 1);
+            break;
+          }
+        }
+          that.setData({
+            anslist: list
+          });
+      }
+    })
+        }}});
+  },
   loadans_end: function () {
     if(!this.data.end)
     {
@@ -208,6 +236,36 @@ Page({
     this.setData({
       anslist: list
     });
+  },
+  delete_comm: function (e) {
+    var that = this; var list = this.data.anslist;
+    var aidx = e.currentTarget.dataset.aidx;
+    var cidx = e.currentTarget.dataset.cidx;
+    var id = list[aidx].comments[cidx].id;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除该评论',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.serverurl + '/comment/del',
+            data: { 'code': app.globalData.code, 'ids': id },
+            success: function (res) {
+              list[aidx].comments.splice(cidx, 1);
+              that.setData({
+                anslist: list
+              });
+            }
+          })
+        }
+      }
+    });
+  },
+  viewuser:function(e){
+    var userid = e.currentTarget.dataset.userid
+    wx.navigateTo({
+        url: '../me/answer?id='+userid,
+    })
   },
   good: function(e){
     var id = e.currentTarget.dataset.id, list = this.data.anslist;
@@ -274,7 +332,7 @@ Page({
     })
   }, playcom: function (e) {
     var that = this;
-    var id = e.currentTarget.dataset.id;
+    var aidx = e.currentTarget.dataset.aidx;
     var cidx = e.currentTarget.dataset.cidx;
     for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
       that.data.anslist[i].play=false;
@@ -282,15 +340,13 @@ Page({
       {
         that.data.anslist[i].comments[j].play = false;
       }
-      if (that.data.anslist[i].id == id) {
-        that.data.anslist[i].comments[cidx].play = true;
-        wx.playBackgroundAudio({
-          dataUrl: app.globalData.audiourl + that.data.anslist[i].comments[cidx].vurl,
-          title: this.data.que.title,
-          coverImgUrl: ''
-        })
-      } 
     }
+    that.data.anslist[aidx].comments[cidx].play = true;
+    wx.playBackgroundAudio({
+      dataUrl: app.globalData.audiourl + that.data.anslist[aidx].comments[cidx].vurl,
+      title: this.data.que.title,
+      coverImgUrl: ''
+    })
     this.setData({
       anslist: that.data.anslist
     })
@@ -414,7 +470,7 @@ Page({
   {
     wx.showModal({
       title: '提示',
-      content: '删除之后该作品就不会显示，是否确认删除',
+      content: '是否确认删除该作品',
       success: function (res) {
         if (res.confirm) {
           wx.request({

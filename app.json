@@ -18,7 +18,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "童言朗读者",
+    "navigationBarTitleText": "童言朗读",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#eeeeee",
     "enablePullDownRefresh":true

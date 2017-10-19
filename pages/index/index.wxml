@@ -4,14 +4,13 @@
 </wxs>
 <view class="container">
   <view class="title-ab">
-    <view class='tt'>欢迎您来到童言朗读练习</view>
-    <view> 朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于成。这里有专业的老师实时点评, 帮助孩子们不断提高。</view>
+    <view>欢迎您来到童言朗读。朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于求成。这里有专业的老师实时点评, 愿能帮你们不断提高。</view>
   </view>
   <view class='tip'>点评老师</view>
   <view class="tc-list">
-    <view class='tc-item' wx:for='{{teacher}}' wx:key="this*">
+    <view class='tc-item' wx:for='{{teacher}}' wx:key="this*"  catchtap='hideinfo' >
       <view wx:if="{{item.show}}" class='drawer_screen'></view>
-      <view wx:if="{{item.show}}"  catchtap='hideinfo'  class="drawer_content">
+      <view wx:if="{{item.show}}" class="drawer_content">
         <view>
           <image mode='aspectFill' src='{{audiourl}}{{item.imageurl}}' class='tcg-icon'></image>
         </view>
@@ -27,7 +26,7 @@
       <view>{{item.name}}</view>
     </view>
   </view>
-  <view class='nav'><view class="{{quetype==-1?'nav_focus':''}}" catchtap='load' data-type='-1'>所有</view><view wx:key="id" wx:for="{{types}}" class="{{quetype==item.id?'nav_focus':''}}" data-type='{{item.id}}' catchtap='load'>{{item.name}}</view></view>
+  <!--<view class='nav'><view class="{{quetype==-1?'nav_focus':''}}" catchtap='load' data-type='-1'>所有</view><view wx:key="id" wx:for="{{types}}" class="{{quetype==item.id?'nav_focus':''}}" data-type='{{item.id}}' catchtap='load'>{{item.name}}</view></view>-->
   <scroll-view class='que-list' bindscrolltoupper="upper" bindscrolltolower="lower" scroll-y="true">
     <navigator wx:for="{{quelist}}" wx:key="id" url='../answer/index?id={{item.id}}'>
       <view class="scroll-view-item">

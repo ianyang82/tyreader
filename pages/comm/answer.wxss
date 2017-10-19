@@ -1,6 +1,6 @@
 
 .ans_list{
-  padding-top: 20px;
+  padding-top: 10px;
   width: 100%
 }
 .ans_list .ans_item{

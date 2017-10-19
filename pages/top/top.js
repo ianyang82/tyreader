@@ -20,15 +20,6 @@ Page({
   onLoad: function (options) {
     userInfo.getuserinfo(this, app);
     this.loadans(0);
-    var that=this;
-    wx.onBackgroundAudioStop(function () {
-      for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
-        that.data.anslist[i].play = false;
-      }
-      that.setData({
-        anslist: that.data.anslist
-      })
-    })
   },
 
   /**
@@ -42,21 +33,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
+    var that = this;
+    wx.onBackgroundAudioStop(function () {
+      for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
+        that.data.anslist[i].play = false;
+      }
+      that.setData({
+        anslist: that.data.anslist
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    wx.stopBackgroundAudio();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    wx.stopBackgroundAudio();
   },
 
   /**
@@ -117,7 +117,6 @@ Page({
   paly:function (e){
     var index = e.currentTarget.dataset.idx;
     var that=this;
-    console.log(that.data.anslist[index].play+"play url:::" + app.globalData.audiourl + that.data.anslist[index].vurl);
     if(that.data.anslist[index].play)
     {
       that.data.anslist[index].play = false;
@@ -140,7 +139,7 @@ Page({
         that.setData({ anslist: that.data.anslist});
         wx.request({
           url: app.globalData.serverurl + '/answer/paly',
-          data: { 'code': app.globalData.code, 'id': that.data.anslist[index] },
+          data: { 'code': app.globalData.code, 'id': that.data.anslist[index].id },
           success: function (res) {
             console.log('add read.........')
           }

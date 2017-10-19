@@ -2,17 +2,17 @@
 <include src="../comm/head.wxml" />
 <view class='container'>
   <view class='nav'>
-    <view bindtap='changenav' data-idx='0' class="{{focusidx==0?'nav_focus':''}}">童言朗读</view>
-    <view bindtap='changenav' data-idx='1' class="{{focusidx==1?'nav_focus':''}}">关于童言</view>
+    <button bindtap='changenav' data-idx='0' class="{{focusidx==0?'nav_focus':''}}">童言朗读</button>
+    <button bindtap='changenav' data-idx='1' class="{{focusidx==1?'nav_focus':''}}">关于童言</button>
+    <button data-idx='2' class="{{focusidx==2?'nav_focus':''}}" open-type='contact'> 建议留言</button>
   </view>
   <view wx:if="{{focusidx==0}}">
     <view class="title-ab">
-      <view class='tt'>欢迎您来到童言朗读练习</view>
-      <view> 朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于成。这里有专业的老师实时点评, 帮助孩子们不断提高。</view>
+      <view>欢迎您来到童言朗读。朗诵训练与提高，是一个循序渐进的过程，应当由易到难，由浅入深，万万不可急于求成。这里有专业的老师实时点评, 愿能帮你们不断提高。</view>
     </view>
     <view class='tip'>点评老师</view>
     <view class="teacher_list">
-      <view class='teacher_item' wx:for="{{teacher}}" wx:key="*this" catchtap='show' data-idx='{{index}}'>
+      <view class='teacher_item' wx:for="{{teacher}}" wx:key="id" catchtap='show' data-idx='{{index}}'>
       <view wx:if="{{item.show}}" class='drawer_screen'></view>
       <view wx:if="{{item.show}}"  catchtap='hideinfo'  class="drawer_content">
         <view>

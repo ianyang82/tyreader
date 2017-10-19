@@ -15,9 +15,11 @@ var getuserinfo = function (page,that){
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         that.globalData.code = res.code;
         updateuserinfo(page, that);
+        page.setData({ "isload": false });
       },
       fail:res =>{
         console.log("login fail...........");
+        page.setData({ "isload": false });
       }
     })
   }else{
@@ -100,6 +102,8 @@ var updateuserinfo = function (page, that){
                 }
               }
             })
+          }, complete:function(){
+            page.setData({ "isload": false });
           }
         })
       } else {

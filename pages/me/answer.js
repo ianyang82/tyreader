@@ -30,16 +30,6 @@ Page({
     }
     else
       uid = app.globalData.userInfo.id;
-    this.loadans(0);
-    var that = this;
-    wx.onBackgroundAudioStop(function () {
-      for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
-        that.data.anslist[i].play = false;
-      }
-      that.setData({
-        anslist: that.data.anslist
-      })
-    })
   },
 
   /**
@@ -53,21 +43,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    this.loadans(0);
+    wx.onBackgroundAudioStop(function () {
+      for (var i = 0, len = that.data.anslist.length; i < len; ++i) {
+        that.data.anslist[i].play = false;
+      }
+      that.setData({
+        anslist: that.data.anslist
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.stopBackgroundAudio();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.stopBackgroundAudio();
   },
 
   /**

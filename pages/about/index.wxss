@@ -20,8 +20,6 @@
 .teacher_head{
   margin: 5px;
 }
-.container{
-}
 .nav{
 width: 100%;
 flex-flow: row;
@@ -29,10 +27,9 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 align-content: center;
-padding: 20px 0;
 }
-.nav view{
-  width: 40%;
+.nav button{
+  width: 30%;
   background-color: #eee;
   text-align: center;
   line-height: 35px;
@@ -40,6 +37,10 @@ padding: 20px 0;
   height: 35px;
   color: #666;
   border: 1px solid #ccc;
+  border-radius: 0;
+}
+.nav button::after{
+  content: none;
 }
 .nav_focus{
   color: limegreen !important;
@@ -170,8 +171,8 @@ border-bottom: 1px #ccc solid;
   border-radius: 5px;
 } 
 .tcg-icon{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   padding: 5px 5px;
   border: 1px solid #aaa;
 }
@@ -186,8 +187,8 @@ border-bottom: 1px #ccc solid;
   color: #666;
   width: 90%;
   padding: 3px 0;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 18px;
 }
 .tc_title{
   padding: 5px 0;

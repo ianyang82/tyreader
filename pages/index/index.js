@@ -46,10 +46,12 @@ Page({
         that.setData({
           quelist: res.data
         })
+        wx.hideLoading();
       }
     });
   },
   onShow:function(){
+    this.load();
     // console.log("show...........");
   },onHide:function(){
     // console.log("hide...............")
@@ -65,9 +67,7 @@ Page({
   onLoad: function () {
     var that = this; 
     userInfo.loadtype(app, that);
-    console.log("start load user..................")
    userInfo.getuserinfo(this, app);
-    console.log("end load user..................")
     wx.request({
       url: app.globalData.serverurl + '/teacher/all',
       success:function(req){
@@ -76,7 +76,9 @@ Page({
         })
       }
     })
-    this.load();
+  },
+  onShareAppMessage: function () {
+
   },
   show:function(e){
     var index = e.currentTarget.dataset.idx;;
